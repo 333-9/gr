@@ -1,0 +1,50 @@
+GR(1)                       General Commands Manual                      GR(1)
+
+NAME
+     gr – search for pattern in files
+
+SYNOPSIS
+     gr [-cwgni] pattern [file...]
+
+DESCRIPTION
+     gr is a pattern searching program in spirit similar to grep, but
+     different in syntax and options.  gr is simpler, and focuses on fast
+     workflow, not completeness in features.
+
+     If no file is given all files in the current directory are searched,
+     unless -i is specified.
+
+   syntax
+     Characters prefixed with '\' are treated literarly.  Alphabetical
+     characters are matched case-sensitively, unless -c is set. following is a
+     list of special characters:
+
+           [  beginning of line
+
+           ]  end of line
+
+           ?  any character
+
+           %  any word characters
+
+           ~  any non word characters
+
+     Other characters have no special meaning.
+
+OPTIONS
+     -c      caseless matching.
+
+     -n      print file and line number.
+
+     -w      show warnings.
+
+     -g      print with color
+
+     -i      read from stdin.
+
+ENVIRONMENT
+     FILECOLOR  determines a program for printing filenames when -g and -n are
+                used.
+
+SEE ALSO
+     grep(1)
