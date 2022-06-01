@@ -1,5 +1,6 @@
 name = gr
 CC = myclang
+PREFIX = /usr/local
 
 $(name): $(name).c
 	$(CC) -o $@ $<
@@ -14,4 +15,5 @@ run: $(name)
 	./$(name)
 
 install: $(name)
-	cp -f $(name) /usr/local/bin/
+	cp -f $(name) $(PREFIX)/bin/
+	cp -f $(name).1 $(PREFIX)/share/man/man1/

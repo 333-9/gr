@@ -111,13 +111,10 @@ wd(unsigned a, unsigned b)
 unsigned
 match(char *e, char *s, unsigned i)
 {
-	char *t, *esc = "ntarf\0E" "\n\t\a\r\f";
-	/* There is a bug here where '{' is present after '}'
-	 * this should not be a problem (will not fix). */
+	char *t;
 	for (; s[i]; i++, e++) {
 		switch (*e) {
 		case '\\': if (!*++e) return i;
-			if ((t = strchr(esc, *e))) *e = t[strlen(esc)+1];
 		default: if (chc(*e) != chc(s[i])) return 0; break;
 		case '[': if (i != 0) return 0; else i--; break;
 		case ']': if (s[i] != '\n' || !s[i]) return 0; break;

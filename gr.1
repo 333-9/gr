@@ -1,0 +1,60 @@
+.Dd June 1, 2022
+.Dt GR 1
+.Os kill-9
+.Sh NAME
+.Nm gr
+.Nd search for pattern in files
+.Sh SYNOPSIS
+.Nm
+.Op Fl cwgni
+.Ar pattern
+.Op Ar file...
+.Sh DESCRIPTION
+.Nm
+is a pattern searching program in spirit similar
+to grep, but different in syntax and options.
+.Nm
+is simpler, and focuses on fast workflow,
+not completeness in features.
+.Pp
+If no file is given all files in the current directory
+are searched, unless \fB-i\fR is specified.
+.Ss syntax
+Characters prefixed with '\\' are treated literarly.
+Alphabetical characters are matched case-sensitively,
+unless \fB-c\fR is set. following is a list of special characters:
+.Bl -tag -width a -offset indent
+.It [
+beginning of line
+.It ]
+end of line
+.It ?
+any character
+.It %
+any word characters
+.It ~
+any non word characters
+.El
+.Pp
+Other characters have no special meaning.
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl c
+caseless matching.
+.It Fl n
+print file and line number.
+.It Fl w
+show warnings.
+.It Fl g
+print with color.
+.It Fl i
+read from stdin.
+.El
+.Sh ENVIRONMENT
+.Bl -tag -width FILECOLOR
+.It Ev FILECOLOR
+determines a program for printing filenames
+when \fB-g\fR and \fB-n\fR are used.
+.El
+.Sh SEE ALSO
+.Xr grep 1
